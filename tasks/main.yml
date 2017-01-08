@@ -1,0 +1,29 @@
+---
+
+- name: apt-get update
+  action: apt update_cache=yes cache_valid_time=86400
+
+- name: hostname設定
+  hostname: name={{ common_server_host_name }}
+
+- name: /etc/hosts設定
+  template: src=hosts dest=/etc/hosts owner=root group=root mode=0644
+
+- include: etckeeper.yml
+  when: common_etckeeper_install == true
+
+- include: locale.yml
+  when: common_locale_setting == true
+
+- include: timezone.yml
+  when: common_timezone_setting == true
+
+- name: ntp on
+  shell: timedatectl set-ntp true
+
+- name: ntp
+  shell: systemctl is-active systemd-timesyncd.service
+
+- name: journaldを永続化
+  file: path=/var/log/journal owner=root group=root mode=0755 state=directory
+

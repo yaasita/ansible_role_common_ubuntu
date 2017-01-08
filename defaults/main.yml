@@ -1,0 +1,7 @@
+---
+
+# common_ubuntu
+common_server_host_name: hoge-server
+common_etckeeper_install: true
+common_locale_setting: true
+common_timezone_setting: true

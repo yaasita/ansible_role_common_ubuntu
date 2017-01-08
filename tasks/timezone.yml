@@ -1,0 +1,9 @@
+---
+
+- name: timezoneの変更
+  template: src=timezone.j2 dest=/etc/timezone owner=root group=root mode=0644
+  register: ja_jp_etc_timezone
+
+- name: timezone変更時のdpkg-reconfigure
+  command: timedatectl set-timezone Asia/Tokyo
+  when: ja_jp_etc_timezone|changed

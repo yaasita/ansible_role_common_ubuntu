@@ -1,0 +1,12 @@
+---
+
+- name: debianでlocal設定
+  include: locale-debian.yml
+  when: ansible_distribution == "Debian"
+
+- name: Ubuntuでlocal設定
+  include: locale-ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+
+- name: default-locale設定
+  template: src=default-locale.j2 dest=/etc/default/locale owner=root group=root mode=0644
