@@ -6,4 +6,4 @@
 
 - name: timezone変更時のdpkg-reconfigure
   command: timedatectl set-timezone Asia/Tokyo
-  when: ja_jp_etc_timezone|changed
+  when: ja_jp_etc_timezone is changed
