@@ -1,7 +1,7 @@
 ---
 
 - name: apt-get update
-  action: apt update_cache=yes cache_valid_time=86400
+  action: apt update_cache=yes upgrade=full cache_valid_time=86400
 
 - name: hostname設定
   hostname: name={{ common_server_host_name }}
