@@ -5,3 +5,6 @@
   with_items:
     - git
     - etckeeper
+
+- name: gitconfig
+  template: src=gitconfig.j2 dest=/root/.gitconfig owner=root group=root mode=0644
